@@ -1,11 +1,12 @@
 import 'package:apetit/services/authorization.dart';
+import 'package:apetit/utils/authorized_pages.dart';
 import 'package:flutter/material.dart';
 
 import '../components/basic_button.dart';
 import '../components/text_form_input.dart';
-import '../utils/CustomColors.dart';
-import '../utils/Routes.dart';
-import '../utils/Toaster.dart';
+import '../utils/custom_colors.dart';
+import '../utils/toaster.dart';
+import 'account_activated.dart';
 
 class RegisterVerificationPage extends StatefulWidget {
   final String email;
@@ -26,7 +27,9 @@ class _RegisterVerificationPageState extends State<RegisterVerificationPage> {
         activationCode: activationCode ?? '',
       ).then((value) {
         if (value.success) {
-          Navigator.pushNamed(context, Routes.accountActivated);
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => const AccountActivatedPage()
+          ));
         } else {
           Toaster.error(context, value.message);
         }
@@ -34,6 +37,12 @@ class _RegisterVerificationPageState extends State<RegisterVerificationPage> {
     } catch (e) {
       Toaster.error(context, e.toString());
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    AuthorizationRedirect.redirectIfAuthorized(context);
   }
 
   @override

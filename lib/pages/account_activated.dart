@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../components/basic_button.dart';
-import '../utils/CustomColors.dart';
-import '../utils/Routes.dart';
+import '../utils/authorized_pages.dart';
+import '../utils/custom_colors.dart';
+import '../utils/routes.dart';
 
 class AccountActivatedPage extends StatelessWidget {
   const AccountActivatedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    AuthorizationRedirect.redirectIfAuthorized(context);
+
     return Scaffold(
       resizeToAvoidBottomInset : false,
       backgroundColor: CustomColors.primary,

@@ -1,4 +1,4 @@
-import 'package:apetit/utils/ServerRoutes.dart';
+import 'package:apetit/utils/server_routes.dart';
 
 import '../entities/recipe.dart';
 import 'http.dart';

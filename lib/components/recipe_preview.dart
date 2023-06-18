@@ -1,4 +1,4 @@
-import 'package:apetit/utils/CustomColors.dart';
+import 'package:apetit/utils/custom_colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class RecipePreview extends StatelessWidget {

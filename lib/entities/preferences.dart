@@ -1,8 +1,8 @@
 class Preferences {
-  final String likes;
-  final String dislikes;
-  final String avoids;
-  final String diet;
+  String likes;
+  String dislikes;
+  String avoids;
+  String diet;
 
   Preferences({
     required this.likes,

@@ -1,5 +1,5 @@
 import 'package:apetit/components/action_icon.dart';
-import 'package:apetit/utils/CustomColors.dart';
+import 'package:apetit/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class LongButton extends StatelessWidget {

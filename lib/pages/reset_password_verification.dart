@@ -1,21 +1,62 @@
+import 'package:apetit/pages/reset_password.dart';
+import 'package:apetit/utils/authorized_pages.dart';
 import 'package:flutter/material.dart';
 
 import '../components/basic_button.dart';
 import '../components/text_form_input.dart';
-import '../utils/CustomColors.dart';
-import '../utils/Routes.dart';
+import '../services/authorization.dart';
+import '../utils/custom_colors.dart';
+import '../utils/form_validation.dart';
+import '../utils/toaster.dart';
 
-class ResetPasswordVerificationPage extends StatelessWidget {
-  const ResetPasswordVerificationPage({Key? key}) : super(key: key);
+class ResetPasswordVerificationPage extends StatefulWidget {
+  final String email;
+
+  const ResetPasswordVerificationPage({Key? key, required this.email}) : super(key: key);
+
+  @override
+  _ResetPasswordVerificationPageState createState() => _ResetPasswordVerificationPageState();
+}
+
+class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificationPage> {
+  String verificationCode = '';
+
+  submit() {
+    if (!FormValidation.validateResetPasswordCode(verificationCode).isValid) {
+      return Toaster.error(context, FormValidation.validateResetPasswordCode(verificationCode).message);
+    }
+
+    try {
+      AuthorizationService.checkResetPasswordCode(widget.email, verificationCode).then((value) {
+        if (value.success) {
+          Navigator.push(context, MaterialPageRoute(
+              builder: (context) => ResetPasswordPage(
+                resetPasswordToken: value.resetPasswordToken!
+              )
+          ));
+        } else {
+          Toaster.error(context, value.message);
+        }
+      });
+    } catch (e) {
+      Toaster.error(context, e.toString());
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    AuthorizationRedirect.redirectIfAuthorized(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset : false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: CustomColors.primary,
-      body: SafeArea (
-        child: Center (
-          child: Column (
+      body: SafeArea(
+        child: Center(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Image(
@@ -38,14 +79,16 @@ class ResetPasswordVerificationPage extends StatelessWidget {
                   ),
                   TextFormInput(
                     label: 'Code',
-                    onChanged: (value) => print('email changed'),
+                    onChanged: (value) => setState(() {
+                      verificationCode = value;
+                    }),
                     type: TextInputType.number,
                   ),
                 ],
               ),
               BasicButton(
-                  text: 'Verify',
-                  onPressed: () => Navigator.pushNamed(context, Routes.resetPassword)
+                text: 'Verify',
+                onPressed: () => submit(),
               ),
             ],
           ),

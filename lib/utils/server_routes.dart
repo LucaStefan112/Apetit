@@ -11,6 +11,7 @@ class ServerRoutes {
   static const String resetPassword = "${_baseUrl}auth/reset-password";
   static const String checkResetPasswordCode = "${_baseUrl}auth/check-reset-password-code";
   static const String changePassword = "${_baseUrl}auth/change-password";
+  static const String logout = "${_baseUrl}auth/logout";
 
   // user routes
   static const String getPreferences = "${_baseUrl}user/preferences";

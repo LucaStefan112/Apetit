@@ -1,8 +1,8 @@
 import 'package:apetit/components/action_icon.dart';
-import 'package:apetit/utils/CustomColors.dart';
+import 'package:apetit/utils/custom_colors.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../utils/Routes.dart';
+import '../utils/routes.dart';
 
 class DishTypeMenu extends StatelessWidget {
   const DishTypeMenu({Key? key}) : super(key: key);

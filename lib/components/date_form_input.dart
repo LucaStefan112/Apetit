@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../utils/CustomColors.dart';
+import '../utils/custom_colors.dart';
 
 class DateFormInput extends StatefulWidget {
   final String label;
   final Function(String) onChanged;
   final TextInputType type;
   final Function? validator;
+  final String? value;
 
   const DateFormInput({
     Key? key,
@@ -14,6 +15,7 @@ class DateFormInput extends StatefulWidget {
     required this.onChanged,
     this.type = TextInputType.text,
     this.validator,
+    this.value
   }) : super(key: key);
 
   @override
@@ -22,6 +24,20 @@ class DateFormInput extends StatefulWidget {
 
 class _DateFormInputState extends State<DateFormInput> {
   TextEditingController dateInput = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    dateInput.text = widget.value ?? '';
+  }
+
+  @override
+  void didUpdateWidget(covariant DateFormInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if(widget.value != null) {
+      dateInput.text = widget.value!.substring(0, 10);
+    }
+  }
 
   @override
   void dispose() {
@@ -43,7 +59,9 @@ class _DateFormInputState extends State<DateFormInput> {
         vertical: 0.012 * MediaQuery.of(context).size.width,
         horizontal: 0.048 * MediaQuery.of(context).size.width,
       ),
-      padding: EdgeInsets.symmetric(horizontal: 0.024 * MediaQuery.of(context).size.width),
+      padding: EdgeInsets.symmetric(
+          horizontal: 0.024 * MediaQuery.of(context).size.width
+      ),
       child: TextFormField(
         validator: (value) => widget.validator != null ? widget.validator!(value!) : null,
         readOnly: true,

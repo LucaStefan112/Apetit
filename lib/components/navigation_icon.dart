@@ -1,7 +1,7 @@
-import 'package:apetit/utils/CustomColors.dart';
+import 'package:apetit/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/Routes.dart';
+import '../utils/routes.dart';
 
 // create an enum with the routes
 enum NavigationIconRoutes {

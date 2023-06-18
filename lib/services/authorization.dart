@@ -1,21 +1,10 @@
 import 'package:apetit/entities/userData.dart';
 import 'package:apetit/services/http.dart';
+import 'package:apetit/services/responses.dart';
 
-import '../utils/ServerRoutes.dart';
+import '../utils/server_routes.dart';
 
 class AuthorizationService {
-  static Future<dynamic> test() async {
-    try {
-      final data = await HttpService.get(
-        url: ServerRoutes.test
-      );
-
-      return data;
-    } catch (e) {
-      throw Exception(e);
-    }
-  }
-
   static Future<EmptyResponse> register(UserData userData) async {
     try {
       final data = await HttpService.post(
@@ -60,7 +49,7 @@ class AuthorizationService {
     }
   }
 
-  static Future<dynamic> login(String email, String password) async {
+  static Future<EmptyResponse> login(String email, String password) async {
     try {
       final data = await HttpService.post(
         url: ServerRoutes.login,
@@ -70,13 +59,13 @@ class AuthorizationService {
         }
       );
 
-      return data;
+      return EmptyResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  static Future<dynamic> resetPassword(String email) async {
+  static Future<EmptyResponse> resetPassword(String email) async {
     try {
       final data = await HttpService.post(
         url: ServerRoutes.resetPassword,
@@ -85,13 +74,13 @@ class AuthorizationService {
         }
       );
 
-      return data;
+      return EmptyResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  static Future<dynamic> checkResetPasswordCode(String email, String resetPasswordCode) async {
+  static Future<CheckResetPasswordResponse> checkResetPasswordCode(String email, String resetPasswordCode) async {
     try {
       final data = await HttpService.post(
         url: ServerRoutes.checkResetPasswordCode,
@@ -101,22 +90,35 @@ class AuthorizationService {
         }
       );
 
-      return data;
+      return CheckResetPasswordResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  static Future<dynamic> changePassword(String newPassword) async {
+  static Future<EmptyResponse> changePassword(String newPassword, String resetPasswordToken) async {
     try {
       final data = await HttpService.post(
         url: ServerRoutes.changePassword,
         body: {
-          'newPassword': newPassword
+          'newPassword': newPassword,
+          'resetPasswordToken': resetPasswordToken
         }
       );
 
-      return data;
+      return EmptyResponse.fromJson(data);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  static Future<EmptyResponse> logout() async {
+    try {
+      final data = await HttpService.get(
+        url: ServerRoutes.logout
+      );
+
+      return EmptyResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }

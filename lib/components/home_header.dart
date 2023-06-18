@@ -3,8 +3,8 @@ import 'package:apetit/components/navigation_icon.dart';
 import 'package:apetit/components/user_icon.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../utils/CustomColors.dart';
-import '../utils/Routes.dart';
+import '../utils/custom_colors.dart';
+import '../utils/routes.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({Key? key}) : super(key: key);

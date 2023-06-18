@@ -1,12 +1,13 @@
 import 'package:apetit/components/generate_recipe_header.dart';
 import 'package:apetit/components/generated_recipe_action_bar.dart';
 import 'package:apetit/components/recipe_preview.dart';
+import 'package:apetit/utils/authorized_pages.dart';
 import 'package:flutter/material.dart';
 
 import '../components/navigation_icon.dart';
-import '../utils/CustomColors.dart';
+import '../utils/custom_colors.dart';
 
-class GenerateRecipePage extends StatelessWidget {
+class GenerateRecipePage extends AuthorizedStatelessPage {
   const GenerateRecipePage({Key? key}) : super(key: key);
 
   @override

@@ -2,15 +2,15 @@ import 'package:apetit/components/privacy_policy.dart';
 import 'package:apetit/entities/userData.dart';
 import 'package:apetit/pages/register_verification.dart';
 import 'package:apetit/services/authorization.dart';
-import 'package:apetit/utils/FormValidation.dart';
-import 'package:apetit/utils/Routes.dart';
-import 'package:apetit/utils/Toaster.dart';
+import 'package:apetit/utils/authorized_pages.dart';
+import 'package:apetit/utils/form_validation.dart';
+import 'package:apetit/utils/toaster.dart';
 import 'package:flutter/material.dart';
 
 import '../components/basic_button.dart';
 import '../components/date_form_input.dart';
 import '../components/text_form_input.dart';
-import '../utils/CustomColors.dart';
+import '../utils/custom_colors.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -30,7 +30,6 @@ class _RegisterPageState extends State<RegisterPage> {
   };
 
   submit() {
-    print(newUserData);
     if (!FormValidation.validateRegister(newUserData).isValid) {
       return Toaster.error(context, FormValidation.validateRegister(newUserData).message);
     }
@@ -50,6 +49,12 @@ class _RegisterPageState extends State<RegisterPage> {
     } catch (e) {
       Toaster.error(context, e.toString());
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    AuthorizationRedirect.redirectIfAuthorized(context);
   }
 
   @override

@@ -2,8 +2,6 @@ class Routes {
   static const authentication = '/authentication';
 
   static const register = '/register';
-  static const registerVerification = '/register-verification';
-  static const accountActivated = '/account-activated';
 
   static const login = '/login';
   static const forgotPassword = '/forgot-password';

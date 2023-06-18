@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/CustomColors.dart';
+import '../utils/custom_colors.dart';
 import 'action_icon.dart';
 
 class VerticalList extends StatelessWidget {

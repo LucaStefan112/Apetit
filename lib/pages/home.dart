@@ -1,10 +1,11 @@
 import 'package:apetit/components/dish_type_menu.dart';
 import 'package:apetit/components/home_header.dart';
+import 'package:apetit/utils/authorized_pages.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/CustomColors.dart';
+import '../utils/custom_colors.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends AuthorizedStatelessPage {
   const HomePage({Key? key}) : super(key: key);
 
   @override

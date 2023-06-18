@@ -1,7 +1,7 @@
+import 'package:apetit/pages/settings.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/CustomColors.dart';
-import '../utils/Routes.dart';
+import '../utils/custom_colors.dart';
 
 class UserIcon extends StatelessWidget {
   const UserIcon({Key? key}) : super(key: key);
@@ -9,7 +9,9 @@ class UserIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () => Navigator.pushNamed(context, Routes.settings),
+      onPressed: () => Navigator.push(context, MaterialPageRoute(
+        builder: (context) => const SettingsPage()
+      )),
 
       child: Container(
         width: 0.25 * MediaQuery.of(context).size.width,

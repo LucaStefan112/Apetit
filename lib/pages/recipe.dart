@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 
 import '../components/navigation_icon.dart';
 import '../components/recipe_details.dart';
-import '../utils/CustomColors.dart';
+import '../utils/authorized_pages.dart';
+import '../utils/custom_colors.dart';
 
-class RecipePage extends StatelessWidget {
+class RecipePage extends AuthorizedStatelessPage {
   const RecipePage({Key? key}) : super(key: key);
 
   @override

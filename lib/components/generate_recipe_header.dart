@@ -1,7 +1,7 @@
 import 'package:apetit/components/navigation_icon.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../utils/CustomColors.dart';
+import '../utils/custom_colors.dart';
 
 class GenerateRecipeHeader extends StatelessWidget {
   final String title;

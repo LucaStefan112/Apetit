@@ -1,11 +1,12 @@
 import 'package:apetit/components/navigation_icon.dart';
 import 'package:apetit/components/vertical_list.dart';
+import 'package:apetit/utils/authorized_pages.dart';
 import 'package:flutter/material.dart';
 
 import '../components/basic_header.dart';
-import '../utils/CustomColors.dart';
+import '../utils/custom_colors.dart';
 
-class LikedRecipesPage extends StatelessWidget {
+class LikedRecipesPage extends AuthorizedStatelessPage {
   const LikedRecipesPage({Key? key}) : super(key: key);
 
   @override
