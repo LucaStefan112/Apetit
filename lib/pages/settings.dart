@@ -1,15 +1,15 @@
-import 'package:apetit/components/basic_button.dart';
-import 'package:apetit/components/navigation_icon.dart';
+import 'package:apetit/components/buttons/basic_button.dart';
+import 'package:apetit/components/buttons/navigation_icon.dart';
 import 'package:apetit/services/authorization.dart';
 import 'package:apetit/services/user.dart';
 import 'package:apetit/utils/routes.dart';
 import 'package:apetit/utils/toaster.dart';
 import 'package:flutter/material.dart';
 
-import '../components/basic_header.dart';
-import '../components/date_form_input.dart';
-import '../components/long_button.dart';
-import '../components/text_form_input.dart';
+import '../components/headers/basic_header.dart';
+import '../components/inputs/date_form_input.dart';
+import '../components/buttons/long_button.dart';
+import '../components/inputs/text_form_input.dart';
 import '../entities/userData.dart';
 import '../utils/authorized_pages.dart';
 import '../utils/custom_colors.dart';
@@ -140,16 +140,15 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LongButton(
             text: 'Cooking History',
-            icon: 'assets/images/cook.png',
+            icon: Icons.history,
             onPressed: () => Navigator.pushNamed(context, Routes.cookingHistory),
           ),
           Container(
             margin: EdgeInsets.only(bottom: 0.02 * MediaQuery.of(context).size.height),
             child: LongButton(
               text: 'Logout',
-              icon: 'assets/images/logout.png',
+              icon: Icons.logout,
               onPressed: () => logout(),
-              iconPaddingLeft: MediaQuery.of(context).size.width * 0.023,
             ),
           ),
         ],

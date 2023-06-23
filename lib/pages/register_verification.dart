@@ -2,8 +2,8 @@ import 'package:apetit/services/authorization.dart';
 import 'package:apetit/utils/authorized_pages.dart';
 import 'package:flutter/material.dart';
 
-import '../components/basic_button.dart';
-import '../components/text_form_input.dart';
+import '../components/buttons/basic_button.dart';
+import '../components/inputs/text_form_input.dart';
 import '../utils/custom_colors.dart';
 import '../utils/toaster.dart';
 import 'account_activated.dart';

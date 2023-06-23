@@ -1,10 +1,10 @@
-import 'package:apetit/components/preference_text_input.dart';
+import 'package:apetit/components/inputs/preference_text_input.dart';
 import 'package:apetit/pages/home.dart';
 import 'package:apetit/services/user.dart';
 import 'package:apetit/utils/toaster.dart';
 import 'package:flutter/material.dart';
 
-import '../components/basic_button.dart';
+import '../components/buttons/basic_button.dart';
 import '../entities/preferences.dart';
 import '../utils/authorized_pages.dart';
 import '../utils/custom_colors.dart';
@@ -34,8 +34,11 @@ class _PreferencesPageState extends State<PreferencesPage> {
       UserService.updatePreferences(Preferences.fromJson(preferences)).then((value) {
         if (value.success) {
           Toaster.success(context, value.message);
-          Navigator.pushReplacement(context, MaterialPageRoute(
-              builder: (context) => const HomePage())
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ),
           );
         } else {
           Toaster.error(context, value.message);

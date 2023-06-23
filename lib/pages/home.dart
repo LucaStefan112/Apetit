@@ -1,5 +1,5 @@
 import 'package:apetit/components/dish_type_menu.dart';
-import 'package:apetit/components/home_header.dart';
+import 'package:apetit/components/headers/home_header.dart';
 import 'package:apetit/utils/authorized_pages.dart';
 import 'package:flutter/material.dart';
 

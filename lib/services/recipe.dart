@@ -1,10 +1,10 @@
+import 'package:apetit/services/responses.dart';
 import 'package:apetit/utils/server_routes.dart';
 
-import '../entities/recipe.dart';
 import 'http.dart';
 
 class RecipeService {
-  static Future<Recipe> generate(String lookingFor) async {
+  static Future<GenerateRecipeResponse> generate(String lookingFor) async {
     try{
       final data = await HttpService.post(
         url: ServerRoutes.generateRecipe,
@@ -13,46 +13,44 @@ class RecipeService {
         }
       );
 
-      return Recipe.fromJson(data);
+      return GenerateRecipeResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  static Future<dynamic> like(String recipeId) async {
+  static Future<GetRecipeResponse> get(String recipeId) async {
     try{
-      final data = await HttpService.post(
-        url: ServerRoutes.likeRecipe(recipeId),
-        body: {}
+      final data = await HttpService.get(
+        url: ServerRoutes.getRecipe(recipeId)
       );
 
-      return data;
+      return GetRecipeResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  static Future<dynamic> unlike(String recipeId) async {
+  static Future<EmptyResponse> like(String recipeId) async {
     try{
-      final data = await HttpService.post(
-        url: ServerRoutes.unlikeRecipe(recipeId),
-        body: {}
+      final data = await HttpService.get(
+        url: ServerRoutes.likeRecipe(recipeId)
       );
 
-      return data;
+      return EmptyResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  static Future<dynamic> cook(String recipeId) async {
+  static Future<EmptyResponse> cook(String recipeId) async {
     try{
-      final data = await HttpService.post(
-        url: ServerRoutes.cookRecipe(recipeId),
-        body: {}
+      print(ServerRoutes.cookRecipe(recipeId));
+      final data = await HttpService.get(
+        url: ServerRoutes.cookRecipe(recipeId)
       );
 
-      return data;
+      return EmptyResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }

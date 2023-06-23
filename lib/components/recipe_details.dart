@@ -1,11 +1,12 @@
+import 'package:apetit/entities/recipe.dart';
 import 'package:apetit/utils/custom_colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class RecipeDetails extends StatelessWidget {
-  final String title;
+  final Recipe? recipe;
 
   const RecipeDetails({Key? key,
-    required this.title,
+    this.recipe
   }) : super(key: key);
 
   @override
@@ -17,7 +18,6 @@ class RecipeDetails extends StatelessWidget {
         margin: EdgeInsets.only(
           left: MediaQuery.of(context).size.width * 0.05,
           right: MediaQuery.of(context).size.width * 0.05,
-          bottom: MediaQuery.of(context).size.height * 0.05,
         ),
         decoration: BoxDecoration(
           color: CustomColors.primary,
@@ -32,103 +32,169 @@ class RecipeDetails extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.015),
-            const Text(
-              'Ingredients:',
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: CustomColors.white
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: Text(
+                  recipe!.name,
+                  style: const TextStyle(
+                    fontSize: 27,
+                    fontWeight: FontWeight.bold,
+                    color: CustomColors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: const [
-                    Text(
-                      'Ingredient 1',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: CustomColors.white,
-                      ),
-                    ),
-                    Text(
-                      'Ingredient 2',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: CustomColors.white
-                      ),
-                    ),
-                  ],
+              // add a description
+              Container(
+                margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.02,
+                  bottom: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  children: const [
-                    Text(
-                      'Ingredient 3',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: CustomColors.white
-                      ),
-                    ),
-                    Text(
-                      'Ingredient 4',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: CustomColors.white
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            const Text(
-              'Steps:',
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: CustomColors.white
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: 1,
+                color: CustomColors.white,
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            Column(
-              children: const [
-                Text(
-                  'Step 1',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: CustomColors.white
+              const Text(
+                'Description:',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: CustomColors.white
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: Text(
+                  recipe!.description,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: CustomColors.white,
+                  ),
+                  maxLines: 20,
+                  textAlign: TextAlign.justify,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.02,
+                  bottom: MediaQuery.of(context).size.height * 0.02,
+                ),
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: 1,
+                color: CustomColors.white,
+              ),
+              const Text(
+                'Ingredients:',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: CustomColors.white
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              for (var ingredient in recipe!.ingredients)
+                Container(
+                  margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.02,
+                    bottom: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.35,
+                        child: Text(
+                          ingredient['name'],
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: CustomColors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.35,
+                        child: Text(
+                          '${ingredient['quantity']}',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: CustomColors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  'Step 2',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: CustomColors.white
+              Container(
+                margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.02,
+                  bottom: MediaQuery.of(context).size.height * 0.02,
+                ),
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: 1,
+                color: CustomColors.white,
+              ),
+              const Text(
+                'Steps:',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: CustomColors.white
+                ),
+              ),
+              for (var step in recipe!.steps)
+                Container(
+                  margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.02,
+                    bottom: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        child: Text(
+                          '${recipe!.steps.indexOf(step) + 1}.',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: CustomColors.white,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        child: Text(
+                          step,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: CustomColors.white,
+                          ),
+                          textAlign: TextAlign.justify
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  'Step 3',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: CustomColors.white
-                  ),
-                ),
-                Text(
-                  'Step 4',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: CustomColors.white
-                  ),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         )
     );
   }

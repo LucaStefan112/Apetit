@@ -1,4 +1,4 @@
-import 'package:apetit/components/privacy_policy.dart';
+import 'package:apetit/components/inputs/privacy_policy.dart';
 import 'package:apetit/entities/userData.dart';
 import 'package:apetit/pages/register_verification.dart';
 import 'package:apetit/services/authorization.dart';
@@ -7,9 +7,9 @@ import 'package:apetit/utils/form_validation.dart';
 import 'package:apetit/utils/toaster.dart';
 import 'package:flutter/material.dart';
 
-import '../components/basic_button.dart';
-import '../components/date_form_input.dart';
-import '../components/text_form_input.dart';
+import '../components/buttons/basic_button.dart';
+import '../components/inputs/date_form_input.dart';
+import '../components/inputs/text_form_input.dart';
 import '../utils/custom_colors.dart';
 
 class RegisterPage extends StatefulWidget {

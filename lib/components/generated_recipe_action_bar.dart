@@ -1,10 +1,24 @@
+import 'package:apetit/entities/recipe.dart';
 import 'package:apetit/utils/custom_colors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import 'action_icon.dart';
+import 'buttons/action_icon.dart';
+
 
 class GeneratedRecipeActionBar extends StatelessWidget {
-  const GeneratedRecipeActionBar({Key? key}) : super(key: key);
+  final Recipe? recipe;
+  final Function? onDislike;
+  final Function onCook;
+  final Function onLike;
+
+  const GeneratedRecipeActionBar({
+    Key? key,
+    this.recipe,
+    required this.onDislike,
+    required this.onCook,
+    required this.onLike,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +31,6 @@ class GeneratedRecipeActionBar extends StatelessWidget {
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
-        // add shadow
         boxShadow: [
           BoxShadow(
             color: CustomColors.secondary,
@@ -33,19 +46,28 @@ class GeneratedRecipeActionBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children:  [
+            if(onDislike != null)
+              ActionIcon(
+                icon: Icons.close,
+                color: Colors.red,
+                padding: 0.1,
+                size: MediaQuery.of(context).size.width * 0.2,
+                onClick: onDislike!,
+              ),
             ActionIcon(
-              iconPath: 'assets/images/dislike.png',
-              paddingLeft: MediaQuery.of(context).size.width * 0.03,
-              paddingRight: MediaQuery.of(context).size.width * 0.03,
-              onClick: () {},
+              icon: Icons.food_bank_outlined,
+              color: Colors.black,
+              padding: 0.04,
+              size: MediaQuery.of(context).size.width * 0.25,
+              onClick: onCook,
             ),
             ActionIcon(
-              iconPath: 'assets/images/cook.png',
-              onClick: () {},
-            ),
-            ActionIcon(
-              iconPath: 'assets/images/liked.png',
-              onClick: () {},
+              icon: (recipe == null || recipe!.liked == null || recipe!.liked == false)
+                ? Icons.favorite_border : Icons.favorite,
+              color: Colors.red,
+              padding: 0.1,
+              size: MediaQuery.of(context).size.width * 0.2,
+              onClick: onLike,
             ),
           ],
         ),

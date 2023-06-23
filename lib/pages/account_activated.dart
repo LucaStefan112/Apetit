@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../components/basic_button.dart';
+import '../components/buttons/basic_button.dart';
 import '../utils/authorized_pages.dart';
 import '../utils/custom_colors.dart';
 import '../utils/routes.dart';
 
-class AccountActivatedPage extends StatelessWidget {
+class AccountActivatedPage extends UnauthorizedStatelessPage {
   const AccountActivatedPage({Key? key}) : super(key: key);
 
   @override

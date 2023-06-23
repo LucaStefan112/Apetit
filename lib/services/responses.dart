@@ -1,4 +1,5 @@
 import 'package:apetit/entities/preferences.dart';
+import 'package:apetit/entities/recipe.dart';
 
 import '../entities/userData.dart';
 
@@ -81,6 +82,90 @@ class GetUserDataResponse extends EmptyResponse {
       message: json['message'],
       success: json['success'],
       userData: json['userData'] != null ? UserData.fromJson(json['userData']) : null
+    );
+  }
+}
+
+class GenerateRecipeResponse extends EmptyResponse {
+  final Recipe? recipe;
+
+  GenerateRecipeResponse({
+    required String message,
+    required bool success,
+    this.recipe
+  }) : super(
+    message: message,
+    success: success
+  );
+
+  factory GenerateRecipeResponse.fromJson(Map<String, dynamic> json) {
+    return GenerateRecipeResponse(
+      message: json['message'],
+      success: json['success'],
+      recipe: json['recipe'] != null ? Recipe.fromJson(json['recipe']) : null
+    );
+  }
+}
+
+class GetRecipeResponse extends EmptyResponse {
+  final Recipe? recipe;
+
+  GetRecipeResponse({
+    required String message,
+    required bool success,
+    this.recipe
+  }) : super(
+    message: message,
+    success: success
+  );
+
+  factory GetRecipeResponse.fromJson(Map<String, dynamic> json) {
+    return GetRecipeResponse(
+      message: json['message'],
+      success: json['success'],
+      recipe: json['recipe'] != null ? Recipe.fromJson(json['recipe']) : null
+    );
+  }
+}
+
+class GetLikedRecipesResponse extends EmptyResponse {
+  final List<Recipe>? likedRecipes;
+
+  GetLikedRecipesResponse({
+    required String message,
+    required bool success,
+    this.likedRecipes
+  }) : super(
+    message: message,
+    success: success
+  );
+
+  factory GetLikedRecipesResponse.fromJson(Map<String, dynamic> json) {
+    return GetLikedRecipesResponse(
+      message: json['message'],
+      success: json['success'],
+        likedRecipes: json['likedRecipes'] != null ? (json['likedRecipes'] as List).map((e) => Recipe.fromJson(e)).toList() : null
+    );
+  }
+}
+
+class GetCookingHistoryResponse extends EmptyResponse {
+  final List<Recipe>? cookingHistory;
+
+  GetCookingHistoryResponse({
+    required String message,
+    required bool success,
+    this.cookingHistory
+  }) : super(
+    message: message,
+    success: success
+  );
+
+  factory GetCookingHistoryResponse.fromJson(Map<String, dynamic> json) {
+    return GetCookingHistoryResponse(
+      message: json['message'],
+      success: json['success'],
+        cookingHistory: json['cookingHistory'] != null ? (json['cookingHistory'] as List).map((e) => Recipe.fromJson(e)).toList() : null
     );
   }
 }

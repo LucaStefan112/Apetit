@@ -1,8 +1,9 @@
+import 'package:apetit/pages/preferences.dart';
 import 'package:apetit/utils/authorized_pages.dart';
 import 'package:flutter/material.dart';
 
-import '../components/basic_button.dart';
-import '../components/text_form_input.dart';
+import '../components/buttons/basic_button.dart';
+import '../components/inputs/text_form_input.dart';
 import '../services/authorization.dart';
 import '../utils/custom_colors.dart';
 import '../utils/form_validation.dart';
@@ -30,7 +31,12 @@ class _LoginPageState extends State<LoginPage> {
     try {
       AuthorizationService.login(userData['email'], userData['password']).then((value) {
         if (value.success) {
-          Navigator.pushNamed(context, Routes.home);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PreferencesPage(),
+            ),
+          );
         } else {
           Toaster.error(context, value.message);
         }

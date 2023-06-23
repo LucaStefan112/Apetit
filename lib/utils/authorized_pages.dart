@@ -7,9 +7,9 @@ class AuthorizationRedirect {
   static void redirectIfAuthorized(BuildContext context) {
     StorageManager.getToken().then((token) {
       if (token != null) {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => const HomePage()
-        ));
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+            builder: (context) => const HomePage()
+        ), (route) => false);
       }
     });
   }
@@ -17,9 +17,9 @@ class AuthorizationRedirect {
   static void redirectIfUnauthorized(BuildContext context) {
     StorageManager.getToken().then((token) {
       if (token == null) {
-        Navigator.push(context, MaterialPageRoute(
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
             builder: (context) => const AuthenticationPage()
-        ));
+        ), (route) => false);
       }
     });
   }

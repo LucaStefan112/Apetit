@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tamas_luca_stefan.apetit.apetit">
    <application
-        android:label="apetit"
+        android:label="Apetit"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

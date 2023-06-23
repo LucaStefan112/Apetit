@@ -32,25 +32,37 @@ class UserService {
     }
   }
 
-  static Future<List<Recipe>> getLikedRecipes() async {
+  static Future<GetLikedRecipesResponse> getLikedRecipes(int page) async {
     try{
-      final List data = (await HttpService.get(
-        url: ServerRoutes.getLikedRecipes
-      )) as List;
+      final data = await HttpService.post(
+        url: ServerRoutes.getLikedRecipes,
+        body: {
+          'pagination': {
+            'skip': page,
+            'take': 10
+          }
+        }
+      );
 
-      return data.map((e) => Recipe.fromJson(e)).toList();
+      return GetLikedRecipesResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  static Future<List<Recipe>> getCookingHistory() async {
+  static Future<GetCookingHistoryResponse> getCookingHistory(int page) async {
     try{
-      final List data = (await HttpService.get(
-        url: ServerRoutes.getCookingHistory
-      )) as List;
+      final data = await HttpService.post(
+        url: ServerRoutes.getCookingHistory,
+        body: {
+          'pagination': {
+            'skip': page,
+            'take': 10
+          }
+        }
+      );
 
-      return data.map((e) => Recipe.fromJson(e)).toList();
+      return GetCookingHistoryResponse.fromJson(data);
     } catch (e) {
       throw Exception(e);
     }

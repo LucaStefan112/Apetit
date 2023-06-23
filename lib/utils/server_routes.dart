@@ -1,8 +1,6 @@
 class ServerRoutes {
   static const String _baseUrl = "http://10.0.2.2:5000/";
 
-  static const test = "${_baseUrl}test";
-
   // auth routes
   static const String register = "${_baseUrl}auth/register";
   static const String resendActivationCode = "${_baseUrl}auth/resend-activation-code";
@@ -23,7 +21,7 @@ class ServerRoutes {
 
   // recipe routes
   static const String generateRecipe = "${_baseUrl}recipe/generate";
+  static String getRecipe (recipeId) { return "${_baseUrl}recipe/$recipeId"; }
   static String likeRecipe (recipeId) { return "${_baseUrl}recipe/like/$recipeId"; }
-  static String unlikeRecipe (recipeId) { return "${_baseUrl}recipe/unlike/$recipeId"; }
   static String cookRecipe (recipeId) { return "${_baseUrl}recipe/cook/$recipeId"; }
 }
