@@ -34,7 +34,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
       UserService.updatePreferences(Preferences.fromJson(preferences)).then((value) {
         if (value.success) {
           Toaster.success(context, value.message);
-          Navigator.pushReplacement(
+          Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => const HomePage(),

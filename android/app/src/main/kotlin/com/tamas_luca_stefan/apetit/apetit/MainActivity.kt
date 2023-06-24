@@ -1,4 +1,4 @@
-package com.tamas_luca_stefan.apetit.apetit
+package com.tamas_luca_stefan.apetit
 
 import io.flutter.embedding.android.FlutterActivity
 
