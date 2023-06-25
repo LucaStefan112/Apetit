@@ -1,5 +1,4 @@
 import 'package:apetit/components/user_icon.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/custom_colors.dart';
@@ -40,12 +39,12 @@ class HomeHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 NavigationIcon(
-                  route: NavigationIconRoutes.back,
+                  route: NavigationIconRoutes.exit,
                   size: MediaQuery.of(context).size.width * 0.09
                 ),
                 const Text('Welcome Chef!',
                   style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 27,
                       fontWeight: FontWeight.bold,
                       color: CustomColors.white
                   ),

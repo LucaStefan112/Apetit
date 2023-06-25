@@ -14,10 +14,10 @@ class RegisterVerificationPage extends StatefulWidget {
   const RegisterVerificationPage({Key? key, required this.email}) : super(key: key);
 
   @override
-  _RegisterVerificationPageState createState() => _RegisterVerificationPageState();
+  RegisterVerificationPageState createState() => RegisterVerificationPageState();
 }
 
-class _RegisterVerificationPageState extends State<RegisterVerificationPage> {
+class RegisterVerificationPageState extends State<RegisterVerificationPage> {
   String? activationCode;
 
   sendVerificationCode() {
@@ -65,7 +65,7 @@ class _RegisterVerificationPageState extends State<RegisterVerificationPage> {
                   Container(
                     margin: const EdgeInsets.only(bottom: 20),
                     child: const Text(
-                      'Enter the verification code send\n to your email address:',
+                      'Enter the verification code sent\n to your email address:',
                       style: TextStyle(
                         color: CustomColors.background,
                         fontSize: 20,

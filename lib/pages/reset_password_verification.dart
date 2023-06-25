@@ -15,10 +15,10 @@ class ResetPasswordVerificationPage extends StatefulWidget {
   const ResetPasswordVerificationPage({Key? key, required this.email}) : super(key: key);
 
   @override
-  _ResetPasswordVerificationPageState createState() => _ResetPasswordVerificationPageState();
+  ResetPasswordVerificationPageState createState() => ResetPasswordVerificationPageState();
 }
 
-class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificationPage> {
+class ResetPasswordVerificationPageState extends State<ResetPasswordVerificationPage> {
   String verificationCode = '';
 
   submit() {

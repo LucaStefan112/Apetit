@@ -1,15 +1,16 @@
 import 'package:apetit/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
-class ActionIcon extends StatelessWidget {
+class ActionIcon extends StatefulWidget {
   final Function onClick;
   final double? size;
   final Color color;
   final bool? withShadow;
   final double? padding;
-  IconData icon;
+  final IconData icon;
 
-  ActionIcon({Key? key,
+  const ActionIcon({
+    Key? key,
     required this.onClick,
     this.size = 50,
     required this.color,
@@ -19,15 +20,20 @@ class ActionIcon extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  ActionIconState createState() => ActionIconState();
+}
+
+class ActionIconState extends State<ActionIcon> {
+  @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () => onClick(),
+      onPressed: () => widget.onClick(),
       child: Container(
-        padding: EdgeInsets.all(size! * padding!),
+        padding: EdgeInsets.all(widget.size! * widget.padding!),
         decoration: BoxDecoration(
           color: CustomColors.white,
           borderRadius: BorderRadius.circular(100),
-          boxShadow: withShadow! ? const [
+          boxShadow: widget.withShadow! ? const [
             BoxShadow(
               color: CustomColors.secondary,
               offset: Offset(0, 0),
@@ -36,9 +42,9 @@ class ActionIcon extends StatelessWidget {
           ] : [],
         ),
         child: Icon(
-          icon,
-          color: color,
-          size: size! * 0.5,
+          widget.icon,
+          color: widget.color,
+          size: widget.size! * 0.5,
         ),
       ),
     );

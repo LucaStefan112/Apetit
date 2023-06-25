@@ -10,7 +10,7 @@ import '../components/headers/basic_header.dart';
 import '../components/inputs/date_form_input.dart';
 import '../components/buttons/long_button.dart';
 import '../components/inputs/text_form_input.dart';
-import '../entities/userData.dart';
+import '../entities/user_data.dart';
 import '../utils/authorized_pages.dart';
 import '../utils/custom_colors.dart';
 import '../utils/form_validation.dart';
@@ -20,14 +20,13 @@ class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  _SettingsPageState createState() => _SettingsPageState();
+  SettingsPageState createState() => SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class SettingsPageState extends State<SettingsPage> {
   Map<String, dynamic> userData = {
     'fullName': null,
     'dateOfBirth': null,
-    'gender': null,
   };
 
   submit() {
@@ -66,7 +65,6 @@ class _SettingsPageState extends State<SettingsPage> {
         setState(() {
           userData['fullName'] = value.userData?.fullName;
           userData['dateOfBirth'] = value.userData?.dateOfBirth;
-          userData['gender'] = value.userData?.gender;
         });
       } else {
         Toaster.error(context, value.message);
@@ -120,15 +118,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     });
                   },
                   value: userData['dateOfBirth'] ?? '',
-                ),
-                TextFormInput(
-                  label: 'Gender',
-                  onChanged: (value) {
-                    setState(() {
-                      userData['gender'] = value;
-                    });
-                  },
-                  value: userData['gender'] ?? '',
                 ),
                 BasicButton(
                   text: 'Save',

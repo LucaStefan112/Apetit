@@ -15,10 +15,10 @@ class CookingHistoryPage extends StatefulWidget {
   const CookingHistoryPage({Key? key}) : super(key: key);
 
   @override
-  _CookingHistoryPageState createState() => _CookingHistoryPageState();
+  CookingHistoryPageState createState() => CookingHistoryPageState();
 }
 
-class _CookingHistoryPageState extends State<CookingHistoryPage> {
+class CookingHistoryPageState extends State<CookingHistoryPage> {
   int page = 0;
   List<Recipe> recipes = [];
   Future<dynamic> future = Future.value(false);
@@ -36,7 +36,7 @@ class _CookingHistoryPageState extends State<CookingHistoryPage> {
           page++;
         });
       } else {
-        Toaster.error(context, response.message!);
+        Toaster.error(context, response.message);
       }
     });
   }

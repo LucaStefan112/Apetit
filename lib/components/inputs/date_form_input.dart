@@ -19,10 +19,10 @@ class DateFormInput extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _DateFormInputState createState() => _DateFormInputState();
+  DateFormInputState createState() => DateFormInputState();
 }
 
-class _DateFormInputState extends State<DateFormInput> {
+class DateFormInputState extends State<DateFormInput> {
   TextEditingController dateInput = TextEditingController();
 
   @override

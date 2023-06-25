@@ -1,8 +1,7 @@
 import 'package:apetit/entities/preferences.dart';
-import 'package:apetit/entities/userData.dart';
+import 'package:apetit/entities/user_data.dart';
 import 'package:apetit/services/responses.dart';
 
-import '../entities/recipe.dart';
 import '../utils/server_routes.dart';
 import 'http.dart';
 

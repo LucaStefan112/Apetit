@@ -4,12 +4,13 @@ import 'package:apetit/utils/server_routes.dart';
 import 'http.dart';
 
 class RecipeService {
-  static Future<GenerateRecipeResponse> generate(String lookingFor) async {
+  static Future<GenerateRecipeResponse> generate(String lookingFor, String details) async {
     try{
       final data = await HttpService.post(
         url: ServerRoutes.generateRecipe,
         body: {
-          "lookingFor": lookingFor
+          "lookingFor": lookingFor,
+          "details": details
         }
       );
 
@@ -35,19 +36,6 @@ class RecipeService {
     try{
       final data = await HttpService.get(
         url: ServerRoutes.likeRecipe(recipeId)
-      );
-
-      return EmptyResponse.fromJson(data);
-    } catch (e) {
-      throw Exception(e);
-    }
-  }
-
-  static Future<EmptyResponse> cook(String recipeId) async {
-    try{
-      print(ServerRoutes.cookRecipe(recipeId));
-      final data = await HttpService.get(
-        url: ServerRoutes.cookRecipe(recipeId)
       );
 
       return EmptyResponse.fromJson(data);

@@ -11,10 +11,10 @@ class PrivacyPolicy extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PrivacyPolicyState createState() => _PrivacyPolicyState();
+  PrivacyPolicyState createState() => PrivacyPolicyState();
 }
 
-class _PrivacyPolicyState extends State<PrivacyPolicy> {
+class PrivacyPolicyState extends State<PrivacyPolicy> {
   bool isChecked = false;
 
   @override

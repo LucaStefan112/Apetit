@@ -1,3 +1,4 @@
+import 'package:apetit/components/inputs/generate_recipe_input.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../utils/custom_colors.dart';
@@ -7,11 +8,13 @@ class GenerateRecipeHeader extends StatelessWidget {
   final String title;
   final NavigationIconRoutes route1;
   final NavigationIconRoutes route2;
+  final Function(String) onChanged;
 
   const GenerateRecipeHeader({Key? key,
     required this.title,
     required this.route1,
     required this.route2,
+    required this.onChanged
   }) : super(key: key);
 
   @override
@@ -58,24 +61,10 @@ class GenerateRecipeHeader extends StatelessWidget {
                           color: CustomColors.white
                       ),
                     ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: CustomColors.white,
-                            width: 3
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        title,
-                        style: const TextStyle(
-                            fontSize: 27,
-                            fontWeight: FontWeight.bold,
-                            color: CustomColors.white,
-                        ),
-                      ),
-                    ),
+                    GenerateRecipeTextField(
+                      initialValue: 'anything',
+                      onChanged: onChanged,
+                    )
                   ],
                 ),
                 NavigationIcon(

@@ -19,10 +19,10 @@ class TextFormInput extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _TextFormInputState createState() => _TextFormInputState();
+  TextFormInputState createState() => TextFormInputState();
 }
 
-class _TextFormInputState extends State<TextFormInput> {
+class TextFormInputState extends State<TextFormInput> {
   late TextEditingController _controller;
 
   @override
@@ -71,6 +71,7 @@ class _TextFormInputState extends State<TextFormInput> {
         obscureText: widget.type == TextInputType.visiblePassword,
         enableSuggestions: widget.type != TextInputType.visiblePassword,
         autocorrect: widget.type != TextInputType.visiblePassword,
+        maxLength: 255,
         keyboardType: widget.type,
         style: const TextStyle(
           color: CustomColors.secondary,

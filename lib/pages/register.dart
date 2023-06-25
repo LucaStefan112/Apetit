@@ -1,5 +1,5 @@
 import 'package:apetit/components/inputs/privacy_policy.dart';
-import 'package:apetit/entities/userData.dart';
+import 'package:apetit/entities/user_data.dart';
 import 'package:apetit/pages/register_verification.dart';
 import 'package:apetit/services/authorization.dart';
 import 'package:apetit/utils/authorized_pages.dart';
@@ -16,10 +16,10 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  RegisterPageState createState() => RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class RegisterPageState extends State<RegisterPage> {
   Map<String, dynamic> newUserData = {
     'fullName': null,
     'dateOfBirth': null,

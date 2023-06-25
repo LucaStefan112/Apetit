@@ -3,14 +3,12 @@ class UserData {
   final String? password;
   final String fullName;
   final String dateOfBirth;
-  final String? gender;
 
   UserData({
     this.email,
     this.password,
     required this.fullName,
     required this.dateOfBirth,
-    this.gender
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) {
@@ -19,7 +17,6 @@ class UserData {
       dateOfBirth: json['dateOfBirth'],
       email: json['email'],
       password: json['password'],
-      gender: json['gender'] ?? ''
     );
   }
 
@@ -29,7 +26,6 @@ class UserData {
       'password': password,
       'fullName': fullName,
       'dateOfBirth': dateOfBirth,
-      'gender': gender,
     };
   }
 }

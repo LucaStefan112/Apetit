@@ -1,7 +1,7 @@
 import 'package:apetit/entities/preferences.dart';
 import 'package:apetit/entities/recipe.dart';
 
-import '../entities/userData.dart';
+import '../entities/user_data.dart';
 
 class EmptyResponse {
   final String message;

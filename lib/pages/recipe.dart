@@ -17,10 +17,10 @@ class RecipePage extends StatefulWidget {
   const RecipePage({Key? key, required this.recipeId}) : super(key: key);
 
   @override
-  _RecipePageState createState() => _RecipePageState();
+  RecipePageState createState() => RecipePageState();
 }
 
-class _RecipePageState extends State<RecipePage> {
+class RecipePageState extends State<RecipePage> {
   Recipe? currentRecipe;
 
   getRecipe() {
@@ -57,19 +57,6 @@ class _RecipePageState extends State<RecipePage> {
     }
   }
 
-  cookRecipe() {
-    if(currentRecipe != null) {
-      RecipeService.cook(currentRecipe!.id).then((value) {
-        EasyLoading.dismiss();
-        if (value.success) {
-          Toaster.success(context, value.message);
-        } else {
-          Toaster.error(context, value.message);
-        }
-      });
-    }
-  }
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -97,7 +84,6 @@ class _RecipePageState extends State<RecipePage> {
           GeneratedRecipeActionBar(
             recipe: currentRecipe,
             onLike: likeRecipe,
-            onCook: cookRecipe,
             onDislike: null,
           ),
         ],

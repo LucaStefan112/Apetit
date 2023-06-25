@@ -15,10 +15,10 @@ class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({Key? key, required this.resetPasswordToken}) : super(key: key);
 
   @override
-  _ResetPasswordPageState createState() => _ResetPasswordPageState();
+  ResetPasswordPageState createState() => ResetPasswordPageState();
 }
 
-class _ResetPasswordPageState extends State<ResetPasswordPage> {
+class ResetPasswordPageState extends State<ResetPasswordPage> {
   Map<String, dynamic> userData = {
     'password': null,
     'confirmPassword': null,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:apetit/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +8,7 @@ import '../../utils/routes.dart';
 enum NavigationIconRoutes {
   back,
   settings,
+  exit,
   none
 }
 
@@ -23,9 +26,15 @@ class NavigationIcon extends StatelessWidget {
     return MaterialButton(
       onPressed: () {
         if (route == NavigationIconRoutes.back) {
-          Navigator.pop(context);
+          if (Navigator.canPop(context)) {
+            Navigator.pop(context);
+          } else {
+            exit(0);
+          }
         } else if (route == NavigationIconRoutes.settings) {
           Navigator.pushNamed(context, Routes.settings);
+        } else if (route == NavigationIconRoutes.exit) {
+          exit(0);
         } else {
           return;
         }

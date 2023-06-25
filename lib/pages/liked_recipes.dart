@@ -15,10 +15,10 @@ class LikedRecipesPage extends StatefulWidget {
   const LikedRecipesPage({Key? key}) : super(key: key);
 
   @override
-  _LikedRecipesPageState createState() => _LikedRecipesPageState();
+  LikedRecipesPageState createState() => LikedRecipesPageState();
 }
 
-class _LikedRecipesPageState extends State<LikedRecipesPage> {
+class LikedRecipesPageState extends State<LikedRecipesPage> {
   int page = 0;
   List<Recipe> recipes = [];
   Future<dynamic> future = Future.value(false);

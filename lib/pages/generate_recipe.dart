@@ -1,3 +1,4 @@
+import 'package:apetit/components/buttons/generate_recipe.dart';
 import 'package:apetit/components/headers/generate_recipe_header.dart';
 import 'package:apetit/components/generated_recipe_action_bar.dart';
 import 'package:apetit/services/recipe.dart';
@@ -15,19 +16,18 @@ class GenerateRecipePage extends StatefulWidget {
   const GenerateRecipePage({Key? key}) : super(key: key);
 
   @override
-  _GenerateRecipePageState createState() => _GenerateRecipePageState();
+  GenerateRecipePageState createState() => GenerateRecipePageState();
 }
 
-class _GenerateRecipePageState extends State<GenerateRecipePage> {
+class GenerateRecipePageState extends State<GenerateRecipePage> {
   late String paramValue;
-  // get the current future that is running to cancel it in the dispose method
+  String details = 'anything';
   late Future<dynamic> currentFuture;
   Recipe? currentRecipe;
 
   generateRecipe() {
     EasyLoading.show(status: 'Generating recipe...');
-
-    currentFuture = RecipeService.generate(paramValue).then((value) {
+    currentFuture = RecipeService.generate(paramValue, details).then((value) {
       EasyLoading.dismiss();
       if (value.success) {
         setState(() {
@@ -58,19 +58,6 @@ class _GenerateRecipePageState extends State<GenerateRecipePage> {
     }
   }
 
-  cookRecipe() {
-    if(currentRecipe != null) {
-      RecipeService.cook(currentRecipe!.id).then((value) {
-        EasyLoading.dismiss();
-        if (value.success) {
-         Toaster.success(context, value.message);
-        } else {
-          Toaster.error(context, value.message);
-        }
-      });
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -81,7 +68,6 @@ class _GenerateRecipePageState extends State<GenerateRecipePage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     paramValue = ModalRoute.of(context)!.settings.arguments as String;
-    generateRecipe();
   }
 
   @override
@@ -103,17 +89,25 @@ class _GenerateRecipePageState extends State<GenerateRecipePage> {
             title: paramValue,
             route1: NavigationIconRoutes.back,
             route2: NavigationIconRoutes.none,
+            onChanged: (value) {
+              setState(() {
+                details = value;
+              });
+            },
           ),
           if(currentRecipe != null)
             RecipeDetails(
               recipe: currentRecipe,
             ),
-          GeneratedRecipeActionBar(
-            recipe: currentRecipe,
-            onDislike: generateRecipe,
-            onLike: likeRecipe,
-            onCook: cookRecipe,
-          ),
+          if(currentRecipe == null)
+            GenerateRecipeButton(
+                onPressed: generateRecipe,
+            ),
+            GeneratedRecipeActionBar(
+              recipe: currentRecipe,
+              onDislike: generateRecipe,
+              onLike: likeRecipe,
+            ),
         ],
       ),
     );

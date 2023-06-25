@@ -57,7 +57,7 @@ class _PreferencesTextInputState extends State<PreferencesTextInput> {
               widget.label1,
               style: const TextStyle(
                 color: CustomColors.background,
-                fontSize: 27,
+                fontSize: 23,
               ),
             ),
           ),
@@ -80,9 +80,10 @@ class _PreferencesTextInputState extends State<PreferencesTextInput> {
             child: TextField(
               style: const TextStyle(
                 color: CustomColors.background,
-                fontSize: 27,
+                fontSize: 23,
                 fontWeight: FontWeight.w700,
               ),
+              maxLength: 100,
               controller: _controller,
               textAlign: TextAlign.center,
               onChanged: (value) => widget.onChanged(value),
@@ -99,7 +100,7 @@ class _PreferencesTextInputState extends State<PreferencesTextInput> {
             widget.label2,
             style: const TextStyle(
               color: CustomColors.background,
-              fontSize: 27,
+              fontSize: 23,
             ),
           ),
         ],

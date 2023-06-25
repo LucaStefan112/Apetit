@@ -3,6 +3,7 @@ import 'package:apetit/pages/home.dart';
 import 'package:apetit/services/user.dart';
 import 'package:apetit/utils/toaster.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../components/buttons/basic_button.dart';
 import '../entities/preferences.dart';
@@ -14,16 +15,18 @@ class PreferencesPage extends StatefulWidget {
   const PreferencesPage({Key? key}) : super(key: key);
 
   @override
-  _PreferencesPageState createState() => _PreferencesPageState();
+  PreferencesPageState createState() => PreferencesPageState();
 }
 
-class _PreferencesPageState extends State<PreferencesPage> {
+class PreferencesPageState extends State<PreferencesPage> {
   Map<String, dynamic> preferences = {
     'likes': null,
     'dislikes': null,
     'avoids': null,
     'diet': null,
   };
+
+  Future<void> future = Future<void>.value();
 
   submit() {
     if (!FormValidation.validateUserPreferences(preferences).isValid) {
@@ -54,7 +57,9 @@ class _PreferencesPageState extends State<PreferencesPage> {
     super.initState();
     AuthorizationRedirect.redirectIfUnauthorized(context);
 
-    UserService.getPreferences().then((value) {
+    EasyLoading.show(status: 'Loading preferences...');
+    future = UserService.getPreferences().then((value) {
+      EasyLoading.dismiss();
       if(value.success) {
         setState(() {
           preferences = value.preferences!.toJson();
@@ -63,6 +68,13 @@ class _PreferencesPageState extends State<PreferencesPage> {
         Toaster.error(context, value.message);
       }
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    future.ignore();
+    EasyLoading.dismiss();
   }
 
   @override
