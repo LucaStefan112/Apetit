@@ -72,6 +72,7 @@ class TextFormInputState extends State<TextFormInput> {
         enableSuggestions: widget.type != TextInputType.visiblePassword,
         autocorrect: widget.type != TextInputType.visiblePassword,
         maxLength: 255,
+        buildCounter: (BuildContext context, {int? currentLength, int? maxLength, bool? isFocused}) => null,
         keyboardType: widget.type,
         style: const TextStyle(
           color: CustomColors.secondary,

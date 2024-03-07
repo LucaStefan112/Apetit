@@ -42,7 +42,9 @@ class NavigationIcon extends StatelessWidget {
       child:
       route == NavigationIconRoutes.none ? const SizedBox( width: 0, height: 0,) :
       Icon(
-        route == NavigationIconRoutes.back ? Icons.arrow_back_rounded : Icons.settings,
+        route == NavigationIconRoutes.back ||
+        route == NavigationIconRoutes.exit ?
+          Icons.arrow_back_rounded : Icons.settings,
         color: CustomColors.white,
         size: size!
       )

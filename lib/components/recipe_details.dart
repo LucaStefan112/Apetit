@@ -42,12 +42,12 @@ class RecipeDetails extends StatelessWidget {
                 child: Text(
                   recipe!.name,
                   style: const TextStyle(
-                    fontSize: 27,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: CustomColors.white,
                   ),
                   textAlign: TextAlign.center,
-                  maxLines: 2,
+                  maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -75,7 +75,7 @@ class RecipeDetails extends StatelessWidget {
                 child: Text(
                   recipe!.description,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 17 ,
                     color: CustomColors.white,
                   ),
                   maxLines: 20,
@@ -117,7 +117,7 @@ class RecipeDetails extends StatelessWidget {
                         child: Text(
                           ingredient['name'],
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 17,
                             color: CustomColors.white,
                           ),
                           textAlign: TextAlign.center,
@@ -130,7 +130,7 @@ class RecipeDetails extends StatelessWidget {
                         child: Text(
                           '${ingredient['quantity']}',
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 17,
                             color: CustomColors.white,
                           ),
                           textAlign: TextAlign.center,
@@ -184,7 +184,7 @@ class RecipeDetails extends StatelessWidget {
                         child: Text(
                           step,
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 17,
                             color: CustomColors.white,
                           ),
                           textAlign: TextAlign.justify

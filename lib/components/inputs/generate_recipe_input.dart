@@ -53,6 +53,7 @@ class GenerateRecipeTextFieldState extends State<GenerateRecipeTextField> {
           fontWeight: FontWeight.w700,
         ),
         maxLength: 30,
+        buildCounter: (BuildContext context, {int? currentLength, int? maxLength, bool? isFocused}) => null,
         autofocus: true,
         controller: _controller,
         textAlign: TextAlign.center,

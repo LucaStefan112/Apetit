@@ -84,6 +84,7 @@ class _PreferencesTextInputState extends State<PreferencesTextInput> {
                 fontWeight: FontWeight.w700,
               ),
               maxLength: 100,
+              buildCounter: (BuildContext context, {int? currentLength, int? maxLength, bool? isFocused}) => null,
               controller: _controller,
               textAlign: TextAlign.center,
               onChanged: (value) => widget.onChanged(value),

@@ -33,6 +33,8 @@ class GenerateRecipeButton extends StatelessWidget {
             fontSize: 20,
             fontWeight: FontWeight.w700,
           ),
+          //center the text
+          textAlign: TextAlign.center,
         ),
       ),
     );
