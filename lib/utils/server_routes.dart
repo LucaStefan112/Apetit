@@ -1,6 +1,6 @@
 class ServerRoutes {
-  static const String _baseUrl = "https://apetit-server-production.up.railway.app/";
-  // static const String _baseUrl = "http://10.0.2.2:5000/";
+  // static const String _baseUrl = "https://apetit-server-production.up.railway.app/";
+  static const String _baseUrl = "http://10.0.2.2:5000/";
 
   // auth routes
   static const String register = "${_baseUrl}auth/register";

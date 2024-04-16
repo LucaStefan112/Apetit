@@ -13,20 +13,31 @@ class VerticalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: list.isEmpty ? [
-          const SizedBox(height: 20,),
-          const Text(
-            'No recipes found...',
-            style: TextStyle(
-              color: CustomColors.secondary,
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
+      child: Container(
+        alignment: Alignment.topCenter,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.768,
+        margin: EdgeInsets.only(
+        left: MediaQuery.of(context).size.width * 0.05,
+        right: MediaQuery.of(context).size.width * 0.05,
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: list.isEmpty ? [
+              const SizedBox(height: 20,),
+              const Text(
+                'No recipes found...',
+                style: TextStyle(
+                  color: CustomColors.secondary,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ] : list.map((item) =>
+              VerticalListItem(item: item)
+            ).toList(),
           ),
-        ] : list.map((item) =>
-          VerticalListItem(item: item)
-        ).toList(),
+        ),
       ),
     );
   }
